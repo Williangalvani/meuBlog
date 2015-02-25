@@ -18,6 +18,6 @@ def index(request):
 def view_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render_to_response("post.html",
-                              {"Post": post},
+                              {"post": post},
                               context_instance=RequestContext(request))
 
