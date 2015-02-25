@@ -7,7 +7,7 @@ class Poster(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=300)
-    subtitle = models.CharField(max_length=300, null=True)
+    subtitle = models.CharField(max_length=300, null=True, blank=True)
     body = models.TextField()
     author = models.ForeignKey(Poster)
     date = models.DateTimeField()
