@@ -7,7 +7,9 @@ from django.template import RequestContext
 def index(request):
     posts = Post.objects.order_by('-date')[:5]
     if not posts:
-        posts= [Post("No posts here!", "")]
+        empty = Post()
+        empty.name = "No posts here!"
+        posts = [empty]
     return render_to_response("index.html",
                               {"posts": posts},
                               context_instance=RequestContext(request))

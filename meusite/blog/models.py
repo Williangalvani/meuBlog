@@ -12,7 +12,3 @@ class Post(models.Model):
     author = models.ForeignKey(Poster)
     date = models.DateTimeField()
 
-    def __init__(self, title, body, *args, **kwargs):
-        super(Post, self).__init__(*args, **kwargs)
-        self.body = body
-        self.title = title
