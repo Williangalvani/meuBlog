@@ -14,6 +14,7 @@ class Post(models.Model):
     body = models.TextField()
     author = models.ForeignKey(Poster)
     date = models.DateTimeField()
+    image = models.ImageField(null=True)
 
     def __str__(self):              # __unicode__ on Python 2
         return '"{0}" by {1} at {2}'.format(self.title, self.author.name, self.date.strftime('%B, %d %Y'))
