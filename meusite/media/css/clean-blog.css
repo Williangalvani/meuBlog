@@ -26,6 +26,18 @@ h6 {
   font-weight: 800;
   margin-bottom:20px; !important
 }
+
+h1.title{
+  font-family: 'Bangers','Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 50px%;
+  margin-bottom:20px; !important
+}
+
+h1.posttitle{
+font-size:80px;
+}
+
 a {
   color: #404040;
 }
@@ -175,9 +187,9 @@ hr.small {
   margin: 10px 0 0;
 }
 @media only screen and (min-width: 768px) {
-  .intro-header .site-heading h1,
-  .intro-header .page-heading h1 {
-    font-size: 80px;
+  .intro-header .site-heading h1.title,
+  .intro-header .page-heading h1.title {
+    font-size: 150px;
   }
 }
 .intro-header .post-heading h1 {
@@ -393,4 +405,7 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #0085a1;
+}
+h1.posttitle{
+font-size:80px; !important
 }
