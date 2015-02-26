@@ -19,8 +19,8 @@
                         {% endif %}
                         </h3>
                     </a>
-                    {% if post.poster %}
-                    <p class="post-meta">Posted by <a href="/poster/{{poster.id}}">{{post.poster}}</a> on {{ post.date }}</p>
+                    {% if post.author %}
+                    <p class="post-meta">Posted by <a href="mailto:{{post.author.email}}">{{post.author.name}}</a> on {{ post.date }}</p>
                     {% endif %}
                 </div>
                 <hr>
