@@ -3,6 +3,8 @@
 <head>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+<link rel="stylesheet" type="text/css" href="/media/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/media/css/clean-blog.css" />
 
 {% block extrastyle %}{% endblock %}
 <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
@@ -11,9 +13,10 @@
 <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
 
 {% block extrahead %}{% endblock %}
-    <link rel="stylesheet" type="text/css" href="/media/css/pagedown_override.css" />
+<link rel="stylesheet" type="text/css" href="/media/css/pagedown_override.css" />
 
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+
 </head>
 <script type="text/javascript" src="/media/codemirror/my_launcher.js"></script>
 {% load i18n %}
