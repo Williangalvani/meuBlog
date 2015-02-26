@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     url(r'^blog/', include('blog.urls')),
+    url(r'^$', 'blog.views.view_redirect'),
+
     url(r'^admin/', include(admin.site.urls)),
     ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
       + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

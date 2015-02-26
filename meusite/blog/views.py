@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from django.http import HttpResponse
 from models import Post
 from django.template import RequestContext
@@ -21,3 +21,6 @@ def view_post(request, post_id):
                               {"post": post},
                               context_instance=RequestContext(request))
 
+
+def view_redirect(request):
+    return redirect("/blog/")

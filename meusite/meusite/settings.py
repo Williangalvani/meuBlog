@@ -63,6 +63,15 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+MARKDOWN_DEUX_STYLES = {
+    "default": {
+        "extras": {
+            "code-friendly": None,
+        },
+        "safe_mode": False,
+    },
+}
+
 ROOT_URLCONF = 'meusite.urls'
 
 WSGI_APPLICATION = 'meusite.wsgi.application'
