@@ -21,21 +21,21 @@ var editor = CodeMirror.fromTextArea(myTextArea.get(0),
 	function updatePreview() {
 		var mhtml=converter.makeHtml(editor.getValue())	;
 		previewDiv.html(mhtml)
-		var pres=previewDiv.find('pre')//addClass("prettyprint");
-		pres.each(
-            function(index, obj) {
-                var prevSibling = this.previousSibling;
-                var nodeValue = null;
-                while (prevSibling && prevSibling.nodeType!==1) {
-                    if (prevSibling.nodeType !== 8) {
-//                        alert(obj);
-                        obj.className = "prettyprint";
-                    }
-                    prevSibling = prevSibling.previousSibling;
-                }
-                //console.log(this.innerHTML, nodeValue);
-            }
-        );
+//		var pres=previewDiv.find('pre')//addClass("prettyprint");
+//		pres.each(
+//            function(index, obj) {
+//                var prevSibling = this.previousSibling;
+//                var nodeValue = null;
+//                while (prevSibling && prevSibling.nodeType!==1) {
+//                    if (prevSibling.nodeType !== 8) {
+////                        alert(obj);
+//                        obj.className = "prettyprint";
+//                    }
+//                    prevSibling = prevSibling.previousSibling;
+//                }
+//                //console.log(this.innerHTML, nodeValue);
+//            }
+//        );
 		PR.prettyPrint();
 	}
 	function scrollPreview(){

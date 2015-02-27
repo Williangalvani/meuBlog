@@ -33,9 +33,6 @@ border: 1px solid;
     float: right;
     width: 55%;
 }
-.wmd-preview *{
-    font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif !important;
-}
 
 /**
  * Add some CSS to overwrite the Django admin CSS for pretty markdown
@@ -65,13 +62,6 @@ border: 1px solid;
     padding: 0;
     background: none;
 }
-.wmd-preview h4,.wmd-preview h5,.wmd-preview h6{ font-weight: bold; }
-.wmd-preview h1{ font-size:2.5em; }
-.wmd-preview h2{ font-size:2em; }
-.wmd-preview h3{ font-size:1.5em; }
-.wmd-preview h4{ font-size:1.2em; }
-.wmd-preview h5{ font-size:1em; }
-.wmd-preview h6{ font-size:0.9em; }
 
 .wmd-preview blockquote{
     color:#666666;
@@ -98,6 +88,7 @@ border: 1px solid;
     border-radius: 2px;
     font-size: 0.95em;
     color: #444
+    font-family: Consolas, 'Liberation Mono', Courier, monospace, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
 }
 /* Block code */
 .wmd-preview pre code {
@@ -109,14 +100,14 @@ border: 1px solid;
     padding: 0;
     background: transparent;
     border: none;
-    font-size: 1.3em;
+    font-size: 14px;
 }
 .wmd-preview pre{
     white-space: pre;
     white-space: pre-wrap;
     word-wrap: break-word;
     margin:1.5em 0 1.5em 0;
-    padding: 1em;
+    padding: 2px;
     background-color: RGB(245,245,245);
     color: white;
 
@@ -140,7 +131,7 @@ border: 1px solid;
     margin: 1em 0 !important; padding: 0 0 0 2em !important;
 }
 .wmd-preview ul li, .wmd-preview ol li{
-    font-size: 14px !important;
+    font-size: 14px
     margin-bottom: 0.75em;
 }
 .wmd-preview li p:last-child { margin:0 }

@@ -67,7 +67,7 @@ MARKDOWN_DEUX_STYLES = {
     "default": {
         "extras": {
             "code-friendly": None,
-            "html-classes": {"pre": "prettyprint"},
+            # "html-classes": {"pre": "prettyprint"},
             "cuddled-lists": None,
             "footnotes": None,
             "header-ids": None,

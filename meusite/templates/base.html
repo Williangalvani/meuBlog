@@ -141,27 +141,6 @@
 
     <script src="/media/prettify/run_prettify.js"></script>
 
-    <script type="text/javascript">
-
-        $( document ).ready(function() {
-        var pres=$('pre')
-		pres.each(
-            function(index, obj) {
-                var prevSibling = this.previousSibling;
-                var nodeValue = null;
-                while (prevSibling && prevSibling.nodeType!==1) {
-                    if (prevSibling.nodeType !== 8) {
-//                        alert(obj);
-                        obj.className = "prettyprint";
-                    }
-                    prevSibling = prevSibling.previousSibling;
-                }
-                //console.log(this.innerHTML, nodeValue);
-            }
-        );
-		PR.prettyPrint();
-		});
-    </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
