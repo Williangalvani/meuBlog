@@ -38,6 +38,9 @@ h1.posttitle{
 font-size:80px;
 }
 
+h3 a {
+  color: #404040;
+}
 a:hover,
 a:focus {
   color: #0085a1;
