@@ -20,8 +20,23 @@ var editor = CodeMirror.fromTextArea(myTextArea.get(0),
 	var previewDiv = django.jQuery('.wmd-preview');
 	function updatePreview() {
 		var mhtml=converter.makeHtml(editor.getValue())	;
-		previewDiv.html(mhtml);
-
+		previewDiv.html(mhtml)
+		var pres=previewDiv.find('pre')//addClass("prettyprint");
+		pres.each(
+            function(index, obj) {
+                var prevSibling = this.previousSibling;
+                var nodeValue = null;
+                while (prevSibling && prevSibling.nodeType!==1) {
+                    if (prevSibling.nodeType !== 8) {
+//                        alert(obj);
+                        obj.className = "prettyprint";
+                    }
+                    prevSibling = prevSibling.previousSibling;
+                }
+                //console.log(this.innerHTML, nodeValue);
+            }
+        );
+		PR.prettyPrint();
 	}
 	function scrollPreview(){
 		var percent=editor.getScrollerElement().scrollTop/editor.getScrollerElement().scrollHeight;
@@ -29,6 +44,7 @@ var editor = CodeMirror.fromTextArea(myTextArea.get(0),
 				previewDiv.scrollTop=percent*previewDiv.scrollHeight;
 	}
 	updatePreview();
+	PR.prettyPrint();
 });
 
 
