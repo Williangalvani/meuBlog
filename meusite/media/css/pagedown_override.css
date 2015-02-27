@@ -131,7 +131,7 @@ border: 1px solid;
     margin: 1em 0 !important; padding: 0 0 0 2em !important;
 }
 .wmd-preview ul li, .wmd-preview ol li{
-    font-size: 14px
+    font-size: 14px !important;
     margin-bottom: 0.75em;
 }
 .wmd-preview li p:last-child { margin:0 }
