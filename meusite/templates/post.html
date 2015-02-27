@@ -40,6 +40,27 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
     </script>
+    <script type="text/javascript">
+
+        $( document ).ready(function() {
+        var pres=$('pre')
+		pres.each(
+            function(index, obj) {
+                var prevSibling = this.previousSibling;
+                var nodeValue = null;
+                while (prevSibling && prevSibling.nodeType!==1) {
+                    if (prevSibling.nodeType !== 8) {
+//                        alert(obj);
+                        obj.className = "prettyprint";
+                    }
+                    prevSibling = prevSibling.previousSibling;
+                }
+                //console.log(this.innerHTML, nodeValue);
+            }
+        );
+		PR.prettyPrint();
+		});
+    </script>
                     </div>
                 </div>
         </div>
