@@ -398,10 +398,24 @@ form .row:first-child .floating-label-form-group {
 img::selection {
   color: white;
   background: transparent;
+
 }
 img::-moz-selection {
   color: white;
   background: transparent;
+}
+
+p img {
+display: block;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+max-width: 100%;
+vertical-align: middle;
+border: 0;
+-ms-interpolation-mode: bicubic;
+
 }
 body {
   webkit-tap-highlight-color: #0085a1;

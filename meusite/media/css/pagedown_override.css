@@ -137,7 +137,19 @@ border: 1px solid;
 .wmd-preview li p:last-child { margin:0 }
 .wmd-preview dd { margin: 0 0 0 2em; }
 
-.wmd-preview img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+.wmd-preview img {box-sizing: border-box;
+color: rgb(40, 173, 230);
+display: block;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+max-width: 100%;
+vertical-align: middle;
+border: 0;
+-ms-interpolation-mode: bicubic;
+
+}
 
 .wmd-preview table { border-collapse: collapse; border-spacing: 0; }
 .wmd-preview td { vertical-align: top; }
