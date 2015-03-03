@@ -7,9 +7,9 @@
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
                 {% for post in posts %}
-                <div class="post-preview">
+                <div  itemscope itemtype="http://schema.org/Article" class="post-preview">
                     <a href="/blog/post/{{post.id}}/{{post.title|slugify}}">
-                        <h2 class="post-title">
+                        <h2 itemprop="name" class="post-title">
                             {{post.title}}
                         </h2>
 
@@ -20,7 +20,10 @@
                         </h3>
                     </a>
                     {% if post.author %}
-                    <p class="post-meta">Posted by <a href="mailto:{{post.author.email}}">{{post.author.name}}</a> on {{ post.date }}</p>
+                    <p class="post-meta">Posted by <a href="mailto:{{post.author.email}}">
+                        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <span itemprop="name">{{post.author.name}}</span></span></a> on
+                        <span itemprop="datePublished" content="2015-03-03T15:55">{{post.date}}</span>
                     {% endif %}
                 </div>
                 <hr>
