@@ -55,7 +55,12 @@ $(function(){
   $(this).mousemove(function(e){
     //clear prior timeout, if any
     window.clearTimeout(preLoadTimer);
-
+    //create new timeout.
+    preLoadTimer = window.setTimeout(doPreLoad, 20000);
+  });
+  $(this).keypress(function(e){
+    //clear prior timeout, if any
+    window.clearTimeout(preLoadTimer);
     //create new timeout.
     preLoadTimer = window.setTimeout(doPreLoad, 20000);
   });
