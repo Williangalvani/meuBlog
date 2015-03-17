@@ -45,7 +45,7 @@ $(function(){
 
 function doPreLoad(){
             $('input[name="_continue"]').click();
-          $.cookie('django_admin_scroll',$(window).scrollTop());
+            $.cookie('django_admin_scroll',$(window).scrollTop());
           }
 
 $(function(){
