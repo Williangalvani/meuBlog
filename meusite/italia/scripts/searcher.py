@@ -36,18 +36,18 @@ class DownloadThread(threading.Thread):
     def run(self):
 
         self.log("started download thread {0} <br>".format(self.name))
-        while not self.stop.is_set() or not self.parent.download_links.empty():
-            print "running"
-            url,counter = self.parent.download_links.get()
-            # print self.name
-            self.log("downloading file nr. " + str(counter)+" of " + str(self.parent.count) + " from " + url + "<br>")
-            try:
-                with open('downloaded/{0}/{0}{1}.jpg'.format(self.name, counter), 'wb') as file:
-                    file.write(urllib2.urlopen(url).read())
-            except:
-                self.log("Errordownload file," + str(counter))
-            self.log("file nr. " + str(counter) + " done.<br>")
-            time.sleep(1)
+        while not self.stop.is_set():
+            if not self.parent.download_links.empty():
+                url, counter = self.parent.download_links.get()
+                # print self.name
+                self.log("downloading file nr. " + str(counter)+" of " + str(self.parent.count) + " from " + url + "<br>")
+                try:
+                    with open('downloaded/{0}/{0}{1}.jpg'.format(self.name, counter), 'wb') as file:
+                        file.write(urllib2.urlopen(url).read())
+                except:
+                    self.log("Errordownload file," + str(counter))
+                self.log("file nr. " + str(counter) + " done.<br>")
+            time.sleep(0.3)
 
         self.log("leaving thread<br>")
         print "thread done!"
@@ -125,6 +125,8 @@ class Downloader(threading.Thread):
                 break
 
         self.log("waiting for threads to end <br>")
+        while not self.download_links.empty:
+            time.sleep(0.5)
         for stop in self.stops:
             stop.set()
         for thread in threads:
