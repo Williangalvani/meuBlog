@@ -18,6 +18,12 @@ def viewDownloadRaw(request, name):
     instance = FamilySearchDownload.objects.filter(filename=name)[0]
     return HttpResponse(instance.log)
 
+def clear(request):
+    models = FamilySearchDownload.objects.all()
+    for model in models:
+        model.delete()
+    return redirect(index)
+
 def index(request):
     if request.method == 'POST':
         if FamilySearchDownload.objects.filter(filename=request.POST["filename"]).exists():

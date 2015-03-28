@@ -13,24 +13,24 @@
                     {{ instance.log | safe }}
                 </textarea>
             <br>
-            {{ instance.done }}
-            {% if instance.done %}
-            <a href="/file/{{filename}}.zip" class="btn btn-success">Download</a>
-            {% endif %}
+
+            <a id="btn" href="/file/{{instance.filename}}.zip" {% if not instance.done %}style="display:none"{% endif %} class="btn btn-success">Download</a>
         </div>
     </div>
     <script src="/media/js/jquery.js"></script>
     <script>
-
+              var t = null;
               var posting = function(){ var postt = $.get( "/apps/italia/view/{{instance.filename}}/raw" );
               // Put the results in a div
+
               postt.done(function( data ) {
                     var content = data;
+                    if(data.indexOf("execution") > -1){clearInterval(t);$("#btn").show()};
                     $( "#text" ).empty().append( content );
                                 var psconsole = $('#text');
                     psconsole.scrollTop( psconsole[0].scrollHeight - psconsole.height());
               });};
-              var t=setInterval(posting,1000);
+              t=setInterval(posting,1000);
               posting();
 
     </script>

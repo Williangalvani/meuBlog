@@ -1,8 +1,5 @@
 from StringIO import StringIO
 import threading
-
-__author__ = 'will'
-
 import os, errno
 import zipfile
 import sys
@@ -25,40 +22,34 @@ download_ender = ".jpg?ctx=CrxCtxPublicAccess&header=Content-Disposition&headerV
 
 class DownloadThread(threading.Thread):
 
-    def __init__(self, name, parent,id):
+    def __init__(self, name, parent,id, stop):
         super(DownloadThread, self).__init__()
         self.running = True
         self.name = name
         self.parent = parent
         self.id = id
-
-    def stop(self):
-        print "trying to stop"
-        self.running = False
+        self.stop = stop
 
     def log(self, string):
         self.parent.log("Thread" + str(self.id)+":" + string)
 
     def run(self):
-        try:
-            self.log("started download thread {0} <br>".format(self.name))
-            while self.running or not self.parent.download_links.empty():
-                print "running"
-                url,counter = self.parent.download_links.get()
-                # print self.name
-                self.log("downloading file nr. " + str(counter)+" of " + str(self.parent.count) + " from " + url + "<br>")
-                try:
-                    with open('downloaded/{0}/{0}{1}.jpg'.format(self.name, counter), 'wb') as file:
-                        file.write(urllib2.urlopen(url).read())
-                except:
-                    self.log("Errordownload file," + str(counter))
-                self.log("file nr. " + str(counter) + " done.<br>")
-                time.sleep(0.1)
 
-            self.log("leaving thread<br>")
-        except Exception, e:
-            self.log(str(e))
-            return
+        self.log("started download thread {0} <br>".format(self.name))
+        while not self.stop.is_set() or not self.parent.download_links.empty():
+            print "running"
+            url,counter = self.parent.download_links.get()
+            # print self.name
+            self.log("downloading file nr. " + str(counter)+" of " + str(self.parent.count) + " from " + url + "<br>")
+            try:
+                with open('downloaded/{0}/{0}{1}.jpg'.format(self.name, counter), 'wb') as file:
+                    file.write(urllib2.urlopen(url).read())
+            except:
+                self.log("Errordownload file," + str(counter))
+            self.log("file nr. " + str(counter) + " done.<br>")
+            time.sleep(0.1)
+
+        self.log("leaving thread<br>")
         print "thread done!"
 
 class Downloader(threading.Thread):
@@ -85,13 +76,13 @@ class Downloader(threading.Thread):
             os.makedirs(directory)
 
     def compressfile(self, name):
-        simonsZip = zipfile.ZipFile("{0}.zip".format(name), "w")
+        simonsZip = zipfile.ZipFile("downloaded/{0}.zip".format(name), "w")
         dir = os.path.join(os.path.curdir, "downloaded", name)
         # print dir
         for dirname, subdirs, files in os.walk(dir):
             simonsZip.write(dirname)
             for filename in files:
-                simonsZip.write(os.path.join(dirname, "downloaded", filename))
+                simonsZip.write(os.path.join(dirname,filename))
         simonsZip.close()
 
     def run(self):
@@ -106,8 +97,11 @@ class Downloader(threading.Thread):
             self.log("Starting job with name " + self.name + " from path " + self.url + "<br>")
         threads = []
         self.done = False
-        for i in range(1):
-            t = DownloadThread(self.name, self,i)
+        self.stops = []
+        for i in range(2):
+            stop = threading.Event()
+            self.stops.append(stop)
+            t = DownloadThread(self.name, self,i,stop)
             t.start()
             threads.append(t)
         site = self.url
@@ -131,10 +125,12 @@ class Downloader(threading.Thread):
                 break
 
         self.log("waiting for threads to end <br>")
+        for stop in self.stops:
+            stop.set()
         for thread in threads:
-            thread.stop()
             thread.join()
-        time.sleep(1000)
+
+        time.sleep(1)
         self.log("threads finished<br>")
         self.done = True
         self.compressfile(self.name)

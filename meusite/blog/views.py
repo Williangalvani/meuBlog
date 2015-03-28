@@ -14,13 +14,15 @@ def index(request):
                               {"posts": posts},
                               context_instance=RequestContext(request))
 
-
 def view_post(request, post_id, title):
     post = get_object_or_404(Post, id=post_id)
     return render_to_response("post.html",
                               {"post": post},
                               context_instance=RequestContext(request))
 
-
 def view_redirect(request):
     return redirect("/blog/")
+
+def apps_index(request):
+    return render_to_response("apps_index.html",
+                              context_instance=RequestContext(request))

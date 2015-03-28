@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="post">
-   {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="OK">
-</form>
-{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <h3>FamilySearch Bulk Downloader</h3>
+                <p>Usage: type a desired name on the filename field, and the familysearch url of the document's first page to be downloaded, then press OK.</p>
+                <form method="post">
+                   {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="OK">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+            {% endblock %}
