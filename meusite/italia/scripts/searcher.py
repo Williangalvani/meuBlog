@@ -47,7 +47,7 @@ class DownloadThread(threading.Thread):
             except:
                 self.log("Errordownload file," + str(counter))
             self.log("file nr. " + str(counter) + " done.<br>")
-            time.sleep(0.1)
+            time.sleep(1)
 
         self.log("leaving thread<br>")
         print "thread done!"
