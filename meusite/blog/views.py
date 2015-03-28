@@ -5,7 +5,7 @@ from django.template import RequestContext
 
 
 def index(request):
-    posts = Post.objects.filter(published=True).order_by('-date')[:5]
+    posts = Post.objects.filter(published=True).order_by('-date')
     if not posts:
         empty = Post()
         empty.name = "No posts here!"
