@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+
+            URL:{{ instance.url }}
+            <br>
+            FILENAME:{{ instance.filename }}
+            <br>
+                <textarea id="text" class="log">
+                    {{ instance.log | safe }}
+                </textarea>
+            <br>
+            {{ instance.done }}
+            {% if instance.done %}
+            <a href="/file/{{filename}}.zip" class="btn btn-success">Download</a>
+            {% endif %}
+        </div>
+    </div>
+    <script src="/media/js/jquery.js"></script>
+    <script>
+
+              var posting = function(){ var postt = $.get( "/apps/italia/view/{{instance.filename}}/raw" );
+              // Put the results in a div
+              postt.done(function( data ) {
+                    var content = data;
+                    $( "#text" ).empty().append( content );
+                                var psconsole = $('#text');
+                    psconsole.scrollTop( psconsole[0].scrollHeight - psconsole.height());
+              });};
+              var t=setInterval(posting,1000);
+              posting();
+
+    </script>
+    {% endblock %}
