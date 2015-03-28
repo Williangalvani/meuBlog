@@ -98,7 +98,7 @@ class Downloader(threading.Thread):
         threads = []
         self.done = False
         self.stops = []
-        for i in range(2):
+        for i in range(1):
             stop = threading.Event()
             self.stops.append(stop)
             t = DownloadThread(self.name, self,i,stop)
