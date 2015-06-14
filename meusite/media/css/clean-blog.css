@@ -4,6 +4,35 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+ div.gfyitem {
+    width:100%;
+    div:not(.gfyCtrlBox):not(.gfyCtrlTabPull){
+        width: 100% !important;
+        max-width:100% !important;
+        height: auto !important;
+        .gfyPreLoadCanvas{
+            display: none;
+        }
+        video{
+            position:relative !important;
+            height: auto !important;
+            margin-top: 0;
+        }
+    }
+    .gfyCtrlBox{
+        margin-bottom:10px !important;
+        .gfyCtrlPause, .gfyCtrlReverse, .gfyCtrlSlower, .gfyCtrlFaster{
+        width:15px;
+        height:15px;
+        margin-top:0;
+        display:inline;
+        }
+      }
+    .gfyGif{
+        position:relative !important;
+    }
+}
+
 
 textarea.log{
     background-color: #000;
