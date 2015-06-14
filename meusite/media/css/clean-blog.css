@@ -4,35 +4,24 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
- div.gfyitem {
-    width:100%;
-    div:not(.gfyCtrlBox):not(.gfyCtrlTabPull){
-        width: 100% !important;
-        max-width:100% !important;
-        height: auto !important;
-        .gfyPreLoadCanvas{
-            display: none;
-        }
-        video{
-            position:relative !important;
-            height: auto !important;
-            margin-top: 0;
-        }
-    }
-    .gfyCtrlBox{
-        margin-bottom:10px !important;
-        .gfyCtrlPause, .gfyCtrlReverse, .gfyCtrlSlower, .gfyCtrlFaster{
-        width:15px;
-        height:15px;
-        margin-top:0;
-        display:inline;
-        }
-      }
-    .gfyGif{
-        position:relative !important;
-    }
+
+
+
+
+.media-flex {
+    position: relative;
+    height: 0px;
 }
 
+.media-flex .gfyitem > div,
+.media-flex .gfyitem .gfyPreLoadCanvas,
+.media-flex .gfyitem .gfyVid,
+.media-flex .gfyitem  .gfyGif {
+    position: absolute !important;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
 
 textarea.log{
     background-color: #000;
