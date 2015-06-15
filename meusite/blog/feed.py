@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from models import Post
 
 class LatestEntriesFeed(Feed):
-    title = "Latest Posts"
+    title = "GalvanicLoop.com Posts"
     link = "/post/"
     description = ""
 
