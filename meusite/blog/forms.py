@@ -24,5 +24,6 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
+        exclude = []
         widgets = {
             'body': ExpandedTextArea(attrs={'class':'codemirror',})}
