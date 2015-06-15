@@ -7,11 +7,11 @@ from models import Post
 
 class LatestEntriesFeed(Feed):
     title = "GalvanicLoop.com Posts"
-    link = "/post/"
+    link = "http://galvanicloop.com/blog/post/"
     description = ""
 
     def items(self):
-        return Post.objects.order_by('-date')[:10]
+        return Post.objects.filter(published=True).order_by('-date')[:10]
 
     def item_title(self, item):
         return item.title
