@@ -11,7 +11,7 @@ class LatestEntriesFeed(Feed):
     description = ""
 
     def items(self):
-        return Post.objects.filter(published=True).order_by('-date')[:10]
+        return Post.objects.filter(published=True).order_by('date')[:10]
 
     def item_title(self, item):
         return item.title
@@ -21,4 +21,4 @@ class LatestEntriesFeed(Feed):
 
     # item_link is only needed if NewsItem has no get_absolute_url method.
     def item_link(self, item):
-        return reverse('Post', args=[item.id, ""])
+        return "http://galvanicloop.com/blog/post/{0}/".format(item.id)#reverse('Post', args=[item.id, ""])
