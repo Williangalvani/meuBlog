@@ -11,7 +11,7 @@ class LatestEntriesFeed(Feed):
     description = ""
 
     def items(self):
-        return Post.objects.filter(published=True).order_by('date')[:10]
+        return Post.objects.filter(published=True).order_by('-date')
 
     def item_title(self, item):
         return item.title
