@@ -10,7 +10,7 @@ class ExpandedTextArea(forms.Textarea):
         super(ExpandedTextArea, self).__init__(attrs)
 
     def render(self, name, value, attrs=None):
-        return mark_safe("""<div class="wmd-wrapper">
+        return mark_safe(u"""<div class="wmd-wrapper">
     <div class="wmd-panel input">
         <div class="wmd_button_bar"></div>
         {0}
