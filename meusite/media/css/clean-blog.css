@@ -4,6 +4,9 @@ body {
   font-family: 'Lora', 'Times New Roman', serif;
 }
 
+img {
+  max-width: 100%;
+}
 p {
   line-height: 1.5;
   margin: 30px 0;
